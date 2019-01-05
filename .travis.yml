@@ -6,6 +6,9 @@ stages:
 
 language: node_js
 
+node_js: 
+  - "10"
+
 jobs:
   include:
     - stage: build-and-deploy
