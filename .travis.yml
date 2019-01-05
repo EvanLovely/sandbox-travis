@@ -24,6 +24,7 @@ jobs:
       name: 'Build + Deploy2'
       script:
         - echo "hi 2"
+        - exit 1
       cache:
         yarn: true
         directories:
