@@ -15,9 +15,9 @@ jobs:
     - stage: build-and-deploy
       name: 'Build + Deploy'
       script:
-        - ls
+        - ls test-artifacts
         - echo "hi"
-        - mkdir test-artifacts && echo "hello" > test-artifacts/hello.txt
+        - echo "hello" > test-artifacts/hello.txt
       cache:
         yarn: true
         directories:
@@ -27,7 +27,7 @@ jobs:
     - stage: build-and-deploy
       name: 'Build + Deploy2'
       script:
-        - ls
+        - ls test-artifacts
         - echo "hi 2"
         - exit 1
       cache:
