@@ -1,47 +1,42 @@
 sudo: required
 dist: trusty
-
 stages:
-  - build-and-deploy # lint code and docs
-
+- build-and-deploy
 language: node_js
-
-node_js: 
-  - "10"
-
-
+node_js:
+- '10'
 jobs:
   include:
-    - stage: build-and-deploy
-      name: 'Build + Deploy'
-      script:
-        - ls test-artifacts
-        - echo "hi"
-        - echo "hello" > test-artifacts/hello.txt
-      cache:
-        yarn: true
-        directories:
-          - node_modules
-          - test-artifacts
-          
-    - stage: build-and-deploy
-      name: 'Build + Deploy2'
-      script:
-        - ls test-artifacts
-        - echo "hi 2"
-        - exit 1
-      cache:
-        yarn: true
-        directories:
-          - node_modules
-          - test-artifacts
-
+  - stage: build-and-deploy
+    name: Build + Deploy
+    script:
+    - node check-runs.js
+    - ls test-artifacts
+    - echo "hi"
+    - echo "hello" > test-artifacts/hello.txt
+    cache:
+      yarn: true
+      directories:
+      - node_modules
+      - test-artifacts
+  - stage: build-and-deploy
+    name: Build + Deploy2
+    script:
+    - ls test-artifacts
+    - echo "hi 2"
+    - exit 1
+    cache:
+      yarn: true
+      directories:
+      - node_modules
+      - test-artifacts
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
-  - export PATH="$HOME/.yarn/bin:$PATH"
-
+- openssl aes-256-cbc -K $encrypted_e3aee4994cab_key -iv $encrypted_e3aee4994cab_iv
+  -in test-basalt-github-app.2019-01-08.private-key.pem.enc -out test-basalt-github-app.2019-01-08.private-key.pem
+  -d
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
+- export PATH="$HOME/.yarn/bin:$PATH"
 notifications:
   email:
     on_success: never
     on_failure: never
-
