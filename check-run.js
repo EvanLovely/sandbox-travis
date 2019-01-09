@@ -51,7 +51,7 @@ async function getAccessToken(installationId = '') {
   }
 }
 
-async function setCheckRun({ name, status, token }) {
+async function setCheckRun({ name, status, output, token }) {
   try {
     return fetch(`https://api.github.com/repos/${repoSlug}/check-runs`, {
       method: 'POST',
@@ -61,6 +61,7 @@ async function setCheckRun({ name, status, token }) {
       body: JSON.stringify({
         name,
         status,
+        output,
         head_sha: getGitSha(),
       }),
     }).then(res => res.json());
@@ -80,6 +81,23 @@ async function go() {
     name: 'ima tester',
     status: 'in_progress',
     token,
+    output: {
+      title: 'ima output title',
+      summary: 'ima output summary',
+      text: 'ima output text *with* markdown!!',
+      images: [
+        {
+          alt: 'img 1',
+          image_url: 'https://placeholder.com/1000',
+          caption: 'ima caption for img 1',
+        },
+        {
+          alt: 'img 2',
+          image_url: 'https://placeholder.com/1000',
+          caption: 'ima caption for img 2',
+        },
+      ]
+    },
   });
   console.log('setCheckRun results', results);
 }
