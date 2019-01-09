@@ -10,7 +10,7 @@ jobs:
   - stage: build-and-deploy
     name: Build + Deploy
     script:
-    - node check-runs.js
+    - node ./check-runs.js
     - ls test-artifacts
     - echo "hi"
     - echo "hello" > test-artifacts/hello.txt
