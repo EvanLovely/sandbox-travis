@@ -31,8 +31,7 @@ jobs:
       - node_modules
       - test-artifacts
 before_install:
-- openssl aes-256-cbc -K $encrypted_e3aee4994cab_key -iv $encrypted_e3aee4994cab_iv
-  -in test-basalt-github-app.2019-01-08.private-key.pem.enc -out test-basalt-github-app.2019-01-08.private-key.pem -d
+- openssl aes-256-cbc -K $encrypted_e3aee4994cab_key -iv $encrypted_e3aee4994cab_iv -in test-basalt-github-app.2019-01-08.private-key.pem.enc -out test-basalt-github-app.2019-01-08.private-key.pem -d
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
 - export PATH="$HOME/.yarn/bin:$PATH"
 notifications:
