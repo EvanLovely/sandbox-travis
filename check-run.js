@@ -88,12 +88,12 @@ async function go() {
       images: [
         {
           alt: 'img 1',
-          image_url: 'https://placeholder.com/1000',
+          image_url: 'https://design.basalt.io/images/brand-stock/julentto-photography-184055.jpg',
           caption: 'ima caption for img 1',
         },
         {
           alt: 'img 2',
-          image_url: 'https://placeholder.com/1000',
+          image_url: 'https://design.basalt.io/images/brand-stock/clarisse-meyer-304306.jpg',
           caption: 'ima caption for img 2',
         },
       ]
